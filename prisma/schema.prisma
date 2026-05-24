@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Service {
+  id               Int               @id
+  name             String
+  leads            Lead[]
+  allocationStates AllocationState[]
+}
+
+model Provider {
+  id            Int              @id
+  name          String
+  monthlyQuota  Int              @default(10)
+  leadsReceived Int              @default(0)
+  assignments   LeadAssignment[]
+}
+
+model Lead {
+  id          String           @id @default(cuid())
+  name        String
+  phone       String
+  city        String
+  description String
+  serviceId   Int
+  service     Service          @relation(fields: [serviceId], references: [id])
+  assignments LeadAssignment[]
+  createdAt   DateTime         @default(now())
+
+  @@unique([phone, serviceId])
+  @@index([serviceId])
+}
+
+model LeadAssignment {
+  id         String   @id @default(cuid())
+  leadId     String
+  providerId Int
+  lead       Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  provider   Provider @relation(fields: [providerId], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@unique([leadId, providerId])
+  @@index([providerId])
+}
+
+model AllocationState {
+  id        Int     @id @default(autoincrement())
+  serviceId Int
+  poolKey   String  @default("fair")
+  cursor    Int     @default(0)
+  service   Service @relation(fields: [serviceId], references: [id])
+
+  @@unique([serviceId, poolKey])
+}
+
+model WebhookEvent {
+  id             String   @id @default(cuid())
+  idempotencyKey String   @unique
+  eventType      String
+  payload        Json?
+  processedAt    DateTime @default(now())
+}

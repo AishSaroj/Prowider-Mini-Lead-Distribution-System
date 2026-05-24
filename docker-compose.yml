@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: prowider
+      POSTGRES_PASSWORD: prowider
+      POSTGRES_DB: prowider
+    ports:
+      - "5432:5432"
+    volumes:
+      - prowider_pg:/var/lib/postgresql/data
+
+volumes:
+  prowider_pg:

@@ -9,7 +9,9 @@ export async function GET() {
     const message =
       error instanceof Error && error.message.includes("DATABASE_URL")
         ? "DATABASE_URL is not set. Copy .env.example to .env and run npm run db:setup."
-        : "Database unavailable. Ensure PostgreSQL is running and DATABASE_URL is correct, then run npm run db:setup.";
+        : process.env.VERCEL
+          ? "Database unavailable on Vercel. Add a Neon/Supabase DATABASE_URL in Vercel → Settings → Environment Variables, redeploy, then run: npx prisma migrate deploy && npm run db:seed"
+          : "Database unavailable. Start PostgreSQL (docker compose up -d or brew services start postgresql@16), then run npm run db:setup.";
     return NextResponse.json({ error: message }, { status: 503 });
   }
 }

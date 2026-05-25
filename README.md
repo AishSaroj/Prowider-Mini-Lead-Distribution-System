@@ -8,8 +8,8 @@ Next.js + PostgreSQL lead enquiry and fair provider assignment system.
 
 | Item | Link |
 |------|------|
-| **GitHub repository** | `https://github.com/YOUR_USERNAME/prowider-lead-system` ← replace after push |
-| **Live demo** | `https://YOUR_APP.vercel.app` ← replace after deploy |
+| **GitHub repository** | https://github.com/AishSaroj/Prowider-Mini-Lead-Distribution-System |
+| **Live demo** | https://prowider-lead-system-chi.vercel.app |
 
 ---
 
@@ -59,6 +59,17 @@ npm run dev
    ```
 
 5. Put the Vercel URL in the table above.
+
+### Troubleshooting: “Could not load dashboard data”
+
+The Provider dashboard calls `GET /api/dashboard`, which requires a working PostgreSQL connection.
+
+1. Copy `.env.example` to `.env` and set `DATABASE_URL` (Docker, Neon, or local Postgres — avoid expired Prisma Data Platform URLs).
+2. Start Postgres (`docker compose up -d` or your cloud instance).
+3. Run `npm run db:setup` (migrations + seed).
+4. Restart the dev server after changing `.env`.
+
+On Vercel, set `DATABASE_URL` in project settings to a Neon/Supabase URL, then run `npx prisma migrate deploy` and `npm run db:seed` against that database.
 
 ### Routes
 

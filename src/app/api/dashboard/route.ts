@@ -2,6 +2,19 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
+  try {
+    return NextResponse.json(await loadDashboard());
+  } catch (error) {
+    console.error("[dashboard]", error);
+    const message =
+      error instanceof Error && error.message.includes("DATABASE_URL")
+        ? "DATABASE_URL is not set. Copy .env.example to .env and run npm run db:setup."
+        : "Database unavailable. Ensure PostgreSQL is running and DATABASE_URL is correct, then run npm run db:setup.";
+    return NextResponse.json({ error: message }, { status: 503 });
+  }
+}
+
+async function loadDashboard() {
   const providers = await prisma.provider.findMany({
     orderBy: { id: "asc" },
     include: {
@@ -34,5 +47,5 @@ export async function GET() {
     })),
   }));
 
-  return NextResponse.json(payload);
+  return payload;
 }

@@ -73,12 +73,18 @@ export function DashboardView() {
   const load = useCallback(async () => {
     try {
       const res = await fetch("/api/dashboard");
-      if (!res.ok) throw new Error("Failed to load dashboard");
       const data = await res.json();
+      if (!res.ok) {
+        throw new Error(
+          typeof data.error === "string" ? data.error : "Failed to load dashboard",
+        );
+      }
       setProviders(data);
       setError(null);
-    } catch {
-      setError("Could not load dashboard data.");
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Could not load dashboard data.",
+      );
     } finally {
       setLoading(false);
     }

@@ -5,10 +5,10 @@ Copy this into your assignment submission email/form after filling in the links.
 ---
 
 **GitHub repository:**  
-https://github.com/YOUR_USERNAME/prowider-lead-system
+https://github.com/AishSaroj/Prowider-Mini-Lead-Distribution-System
 
 **Live demo URL:**  
-https://YOUR_APP.vercel.app
+https://prowider-lead-system-chi.vercel.app
 
 ---
 

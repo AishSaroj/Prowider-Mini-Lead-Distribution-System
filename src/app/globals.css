@@ -33,9 +33,25 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  color-scheme: light;
+}
+
 html,
-body {
+body,
+main,
+.app-shell {
   background-color: #ffffff !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body,
+  main,
+  .app-shell {
+    background-color: #ffffff !important;
+    color: #0f172a;
+  }
 }
 
 body {

@@ -116,7 +116,7 @@ export default function TestToolsPage() {
               {log.map((line, i) => (
                 <li
                   key={`${line}-${i}`}
-                  className="rounded-lg bg-slate-900 px-3 py-2 font-mono text-xs leading-relaxed text-slate-100"
+                  className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 font-mono text-xs leading-relaxed text-slate-800"
                 >
                   {line}
                 </li>

@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white">
+    <html lang="en" className="bg-white" style={{ colorScheme: "light" }}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} app-shell flex min-h-screen flex-col bg-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} app-shell flex min-h-screen flex-col bg-white text-slate-900 antialiased`}
       >
         <Nav />
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-12">
+        <main className="mx-auto w-full max-w-6xl flex-1 bg-white px-4 py-10 sm:px-6 sm:py-12">
           {children}
         </main>
         <footer className="mt-auto border-t border-slate-200/80 bg-white py-6 pb-10 text-center text-xs text-slate-500">

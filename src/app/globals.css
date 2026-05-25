@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
+  --background: #ffffff;
   --foreground: #0f172a;
 
   --card: #ffffff;
@@ -33,13 +33,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -50,19 +43,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* subtle gradient background */
 .app-shell {
-  background-image:
-    radial-gradient(
-      ellipse 80% 50% at 50% -20%,
-      rgb(20 184 166 / 0.10),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 60% 40% at 100% 0%,
-      rgb(99 102 241 / 0.05),
-      transparent
-    );
+  background-color: #ffffff;
 }
 
 @layer base {

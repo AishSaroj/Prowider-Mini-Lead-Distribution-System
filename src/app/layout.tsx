@@ -32,7 +32,7 @@ export default function RootLayout({
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-12">
           {children}
         </main>
-        <footer className="mt-auto border-t border-slate-200/80 bg-white/50 py-6 pb-10 text-center text-xs text-slate-500">
+        <footer className="mt-auto border-t border-slate-200/80 bg-white py-6 pb-10 text-center text-xs text-slate-500">
           Prowider Mini Lead Distribution · Assignment demo
         </footer>
       </body>

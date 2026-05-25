@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-white">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} app-shell flex min-h-screen flex-col antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} app-shell flex min-h-screen flex-col bg-white antialiased`}
       >
         <Nav />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 sm:py-12">
